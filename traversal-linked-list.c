@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 struct node
 {
     int data;
     struct node *next;
 };
+
 void linkedListTraversal(struct node *ptr)
 {
     while (ptr != NULL)
@@ -13,6 +15,15 @@ void linkedListTraversal(struct node *ptr)
         ptr = ptr->next;
     }
 }
+
+struct node *insertInBegining(struct node *head, int data)
+{
+    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    ptr->next = head;
+    ptr->data = data;
+    return ptr;
+};
+
 int main()
 {
     struct node *head;
@@ -38,6 +49,11 @@ int main()
     fourth->data = 11;
     fourth->next = NULL;
 
+    printf("Node Before Update : \n");
+    linkedListTraversal(head);
+
+    printf("Node After Update : \n");
+    head = insertInBegining(head, 7);
     linkedListTraversal(head);
 
     return 0;
