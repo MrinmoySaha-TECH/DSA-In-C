@@ -24,6 +24,44 @@ struct node *insertInBegining(struct node *head, int data)
     return ptr;
 };
 
+struct node *insertAtIndex(struct node *head, int data, int index)
+{
+    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    ptr->data = data;
+
+    struct node *p = head;
+
+    int i = 0;
+    while (i != index - 1)
+    {
+        p = p->next;
+        i++;
+    }
+
+    ptr->next = p->next;
+    p->next = ptr;
+
+    return head;
+};
+
+struct node *insertInEnd(struct node *head, int data)
+{
+    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    ptr->data = data;
+
+    struct node *p = head;
+
+    while (p->next != NULL)
+    {
+        p = p->next;
+    }
+
+    p->next = ptr;
+    ptr->next = NULL;
+
+    return head;
+};
+
 int main()
 {
     struct node *head;
@@ -53,7 +91,7 @@ int main()
     linkedListTraversal(head);
 
     printf("Node After Update : \n");
-    head = insertInBegining(head, 7);
+    head = insertAtIndex(head, 12, 1);
     linkedListTraversal(head);
 
     return 0;
