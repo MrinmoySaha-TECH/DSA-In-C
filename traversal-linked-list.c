@@ -59,7 +59,7 @@ struct node *insertInEnd(struct node *head, int data)
     p->next = ptr;
     ptr->next = NULL;
 
-    return head;
+    return head ;
 };
 
 int main()
