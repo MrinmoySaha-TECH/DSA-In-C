@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdio.h>
+
 
 void arrTraversal(int arr[], int n)
 {
