@@ -62,6 +62,14 @@ struct node *insertInEnd(struct node *head, int data)
     return head ;
 };
 
+struct node *deleteAtFirst (struct node *head)
+{
+    struct node *p = head;
+    head = head->next;
+    free(p);
+    return head;
+}
+
 int main()
 {
     struct node *head;
@@ -91,7 +99,7 @@ int main()
     linkedListTraversal(head);
 
     printf("Node After Update : \n");
-    head = insertAtIndex(head, 12, 1);
+    head = deleteAtFirst(head);
     linkedListTraversal(head);
 
     return 0;
