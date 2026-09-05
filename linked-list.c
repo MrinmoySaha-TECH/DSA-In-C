@@ -59,14 +59,68 @@ struct node *insertInEnd(struct node *head, int data)
     p->next = ptr;
     ptr->next = NULL;
 
-    return head ;
+    return head;
 };
 
-struct node *deleteAtFirst (struct node *head)
+
+
+struct node *deleteAtFirst(struct node *head)
 {
     struct node *p = head;
     head = head->next;
     free(p);
+    return head;
+}
+
+struct node *deleteAtIndex(struct node *head, int index)
+{
+    struct node *p = head;
+    struct node *q = head->next;
+
+    for (int i = 0; i < index - 1; i++)
+    {
+        p = p->next;
+        q = q->next;
+    }
+
+    p->next = q->next;
+    free(q);
+    return head;
+}
+
+struct node *deleteAtLast(struct node *head)
+{
+    struct node *p = head;
+    struct node *q = head->next;
+    while (q->next != NULL)
+    {
+        p = p->next;
+        q = q->next;
+    }
+    p->next = NULL;
+    free(q);
+    return head;
+}
+
+struct node *deleteValue (struct node *head, int value)
+{
+    struct node *p = head;
+    struct node *q = head->next;
+
+    while(q->data != value && q->next != NULL)
+    {
+        p = p->next;
+        q = q->next;
+    }
+
+    if (q->data == value)
+    {
+        p->next = q->next;
+        free(q);
+    } else
+    {
+        printf("You Entered A Number that Not Exists in List, So Nothing Chhanges. \n");
+    }
     return head;
 }
 
@@ -99,7 +153,10 @@ int main()
     linkedListTraversal(head);
 
     printf("Node After Update : \n");
-    head = deleteAtFirst(head);
+    // head = deleteAtFirst(head);
+    // head = deleteAtLast(head);
+    //head = deleteAtIndex(head, 2);
+    head = deleteValue(head, 3);
     linkedListTraversal(head);
 
     return 0;
