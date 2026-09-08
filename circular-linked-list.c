@@ -33,6 +33,60 @@ struct node *insertAtFirst(struct node *head, int data)
     return head;
 }
 
+struct node *insertAtLsast(struct node *head, int data)
+{
+    struct node *p = head;
+    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    ptr->data = data;
+
+    while (p->next != head)
+    {
+        p = p->next;
+    }
+
+    p->next == head;
+    p->next = ptr;
+    ptr->next = head;
+
+    return head;
+}
+
+struct node *insertAtIndex(struct node *head, int index, int data)
+{
+    struct node *p = head;
+    struct node *q = head->next;
+    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    ptr->data = data;
+
+    int i = 0;
+    while (i != index - 1)
+    {
+        p = p->next;
+        q = q->next;
+        i++;
+    }
+    p->next = ptr;
+    ptr->next = q;
+
+    return head;
+}
+
+struct node *insertAfterNode(struct node *head, int value, int data)
+{
+    struct node *p = head;
+    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    ptr->data = data;
+
+    do
+    {
+        p = p->next;
+    } while (p != head);
+    
+    ptr->next = p->next;
+    p->next = ptr;
+    return head;
+}
+
 int main()
 {
     struct node *head;
@@ -61,7 +115,8 @@ int main()
     printf("Node Before Update : \n");
     linkedListTraversal(head);
     printf("Node After Update : \n");
-    head = insertAtFirst(head, 7);
+    head = insertAfterNode(head, 8, 99);
     linkedListTraversal(head);
     return 0;
+
 }
