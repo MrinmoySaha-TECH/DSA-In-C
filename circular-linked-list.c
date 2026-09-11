@@ -87,6 +87,30 @@ struct node *insertAfterNode(struct node *head, int value, int data)
     return head;
 }
 
+struct node *deleteAtFirst(struct node *head)
+{
+    struct node *p = head;
+    while (p->next != head)
+    {
+        p = p->next;
+    } 
+    p->next = head->next;
+    struct node *temp = head;
+    head = head->next;
+    free (temp);
+    return head;
+}
+
+struct node *deleteAtEnd (struct node *head)
+{
+    struct node *p = head;
+    while (p->next != head)
+    {
+        p = p->next;
+    }
+    
+}
+
 int main()
 {
     struct node *head;
@@ -115,7 +139,7 @@ int main()
     printf("Node Before Update : \n");
     linkedListTraversal(head);
     printf("Node After Update : \n");
-    head = insertAfterNode(head, 8, 99);
+    head = deleteAtEnd(head);
     linkedListTraversal(head);
     return 0;
 
