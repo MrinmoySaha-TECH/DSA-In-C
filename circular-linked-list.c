@@ -104,11 +104,16 @@ struct node *deleteAtFirst(struct node *head)
 struct node *deleteAtEnd (struct node *head)
 {
     struct node *p = head;
-    while (p->next != head)
+    struct node *q = head->next;
+    while (q->next != head)
     {
         p = p->next;
+        q = q->next;
     }
-    
+    p->next = q->next;
+    p->next = head;
+    free(q);
+    return head;
 }
 
 int main()
