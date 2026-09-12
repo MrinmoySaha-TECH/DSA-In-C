@@ -116,6 +116,23 @@ struct node *deleteAtEnd (struct node *head)
     return head;
 }
 
+struct node *deleteAtIndex(struct node *head, int index)
+{
+    struct node *p = head;
+    struct node *q = head->next;
+
+    int i = 0;
+    while(i != index - 1)
+    {
+        p = p->next;
+        q = q->next;
+        i++;
+    }
+    p->next = q->next;
+    free(q);
+    return head;
+}
+
 int main()
 {
     struct node *head;
@@ -144,7 +161,7 @@ int main()
     printf("Node Before Update : \n");
     linkedListTraversal(head);
     printf("Node After Update : \n");
-    head = deleteAtEnd(head);
+    head = deleteAtIndex(head, 2);
     linkedListTraversal(head);
     return 0;
 
