@@ -69,6 +69,23 @@ int pop(struct node **top)
     return x;
 }
 
+int peek (struct node *top, int position)
+{
+    struct node *p = top;
+    for (int i = 0; (i < position - 1 && p != NULL); i++)
+    {
+        p = p->next;
+    }
+
+    if (p != NULL)
+    {
+        return p->data;
+    }
+    else{
+        return 0;
+    }
+}
+
 int main()
 {
     struct node *top = NULL;
@@ -81,8 +98,12 @@ int main()
 
     linkListTraversal(top);
 
+    printf("Peek: %d\n", peek(top, 1));
+
     printf("\nPopped: %d\n", pop(&top));
-    printf("Popped: %d\n", pop(&top));
+    printf("Popped: %d\n\n", pop(&top));
+
+    printf("Stack After Update\n\n");
 
     linkListTraversal(top);
 
