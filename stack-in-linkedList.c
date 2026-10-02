@@ -86,6 +86,11 @@ int peek (struct node *top, int position)
     }
 }
 
+int topElement (struct node *top)
+{
+    return top->data;
+}
+
 int main()
 {
     struct node *top = NULL;
@@ -96,16 +101,17 @@ int main()
     top = push(top, 4);
     top = push(top, 5);
 
-    linkListTraversal(top);
+    linkListTraversal(top); 
 
     printf("Peek: %d\n", peek(top, 1));
 
-    printf("\nPopped: %d\n", pop(&top));
-    printf("Popped: %d\n\n", pop(&top));
+    // printf("\nPopped: %d\n", pop(&top));
+    // printf("Popped: %d\n\n", pop(&top));
 
-    printf("Stack After Update\n\n");
+    // printf("Stack After Update\n\n");
 
-    linkListTraversal(top);
+    
+    // linkListTraversal(top);
 
     return 0;
 }
