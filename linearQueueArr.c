@@ -70,7 +70,7 @@ int main()
 
     struct queue q;
     q.size = 5;
-    q.r = q.f = 0;
+    q.r = q.f = -1;
     q.arr = (int *)malloc(q.size * sizeof(int));
 
     enqueue(&q, 1);
