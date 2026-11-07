@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void printArr (int *A, int n)
+void printArr(int *A, int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -9,7 +9,7 @@ void printArr (int *A, int n)
     printf("\n");
 }
 
-void selectionSort (int *A, int n)
+void selectionSort(int *A, int n)
 {
     int temp, minIndex;
     for (int i = 0; i < n - 1; i++)
@@ -21,17 +21,16 @@ void selectionSort (int *A, int n)
             {
                 minIndex = j;
             }
-            
         }
         temp = A[i];
-            A[i] = A[minIndex];
-            A[minIndex] = temp;
-        
+        A[i] = A[minIndex];
+        A[minIndex] = temp;
     }
-    
 }
-int main(){
-    int A[] = {3,2,1,8};
+
+int main()
+{
+    int A[] = {3, 2, 1, 8};
     int n = sizeof(A) / sizeof(A[0]);
     printArr(A, n);
     selectionSort(A, n);
